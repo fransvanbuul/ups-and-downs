@@ -55,6 +55,7 @@ fun tFinal(shape: Shape): Double {
 
     while( x.x < L ) {
         x += v * dt
+        x = Vec(x.x, shape(x.x)) // keeping the ball on the shape
         val a = force(shape, x.x)/m
         v += a * dt
         if(v.x < 0) throw IllegalStateException("v.x < 0")
