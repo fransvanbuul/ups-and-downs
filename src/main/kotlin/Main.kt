@@ -19,7 +19,7 @@ data class Vec(val x: Double, val z: Double) {
 
 /* Physical constants. */
 const val m: Double = 0.1 // mass of the ball in kg
-const val mu: Double = 0.01 // friction coefficient, dimensionless
+const val mu: Double = 0.00 // friction coefficient, dimensionless
 const val L: Double = 1.0 // distance between points A and B in m
 const val g: Double = 9.81 // gravitational acceleration in m/s^2
 val vI: Vec = Vec(1.0, 0.0) // initial velocity, m/s
@@ -77,13 +77,15 @@ fun calculate(shape: Shape) {
 }
 
 fun main() {
+    println("m = ${m} kg, L = ${L} m, mu = ${mu}, vI = ${vI} m/s, g = ${g} m/s²")
+    println()
     calculate(Straight)
-    println()
-    for(n in 1..9) calculate(Cosine(n*1000, 0.0025))
-    println()
-    for(n in 1..9) calculate(Cosine(n, 0.005))
     println()
     for(n in 1..9) calculate(Cosine(n, 0.050))
     println()
+    for(n in 1..9) calculate(Cosine(n, 0.005))
+    println()
     for(a in 2 .. 20) calculate(Cosine(1, 0.025 * a))
+    println()
+    for(n in 1..9) calculate(Cosine(n*1000, 0.0025))
 }
