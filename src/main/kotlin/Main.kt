@@ -69,7 +69,7 @@ object Straight : Shape({ _ -> 0.0 }) {
     override fun toString() = "Straight"
 }
 class Cosine(val n: Int, val a: Double) : Shape({ x -> a * (cos(2.0 * PI * n * x / L) - 1.0)}) {
-    override fun toString() = "Cosine(#periods = ${"%3d".format(n)}, amplitude = ${"%.4f".format(a)})"
+    override fun toString() = "Cosine(#periods = ${"%4d".format(n)}, amplitude = ${"%.4f".format(a)})"
 }
 
 fun calculate(shape: Shape) {
@@ -79,7 +79,9 @@ fun calculate(shape: Shape) {
 fun main() {
     calculate(Straight)
     println()
-    for(n in 1..9) calculate(Cosine(n*50, 0.0025))
+    for(n in 1..9) calculate(Cosine(n*1000, 0.0025))
+    println()
+    for(n in 1..9) calculate(Cosine(n, 0.005))
     println()
     for(n in 1..9) calculate(Cosine(n, 0.050))
     println()
